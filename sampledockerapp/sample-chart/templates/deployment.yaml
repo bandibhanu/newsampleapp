@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SampleDockerApp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: SampleDockerApp
+  template:
+    metadata:
+      labels:
+        app: SampleDockerApp
+    spec:
+      containers:
+      - name: SampleDockerApp
+        image: sampledockerapp.azurecr.io/reddivaripriyanka/sampleappforhelm:#{Build.BuildId}#
+        ports:
+        - containerPort: 80
+        env:
+          - name: PODNAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+      imagePullSecrets:
+      - name: bhanu9505508737
