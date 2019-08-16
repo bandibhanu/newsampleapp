@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
-COPY ["sampledockerApp/sampledockerapp.csproj", "sampledockerapp/"]
+COPY ["sampledockerapp/sampledockerapp.csproj", "sampledockerapp/"]
 RUN dotnet restore "sampledockerapp/sampledockerapp.csproj"
 COPY . .
 WORKDIR "/src/sampledockerapp"
